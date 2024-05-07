@@ -4,6 +4,7 @@ https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html
 https://www.youtube.com/watch?v=mHeh-8xZvBo
 https://www.youtube.com/watch?v=EqxyCswIVfM
 https://www.youtube.com/watch?v=3rrPr90Oras
+https://www.youtube.com/watch?v=RS1uqBIVruQ&ab_channel=ZarcadeGames
 
 ChatGPT Questions
 1. Is there a command to check if it is touching a surface instead of is_on_floor?
