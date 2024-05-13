@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpws686a6d5fl"]
+
+[ext_resource type="Script" path="res://scripts/fork.gd" id="1_avls6"]
+[ext_resource type="Texture2D" uid="uid://dmbtkxenujgeq" path="res://sprites/fork.png" id="2_cj5pa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrfsu"]
+size = Vector2(209, 233)
+
+[node name="fork" type="StaticBody2D"]
+script = ExtResource("1_avls6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-183.5, -263.5)
+shape = SubResource("RectangleShape2D_nrfsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-190, 217)
+scale = Vector2(1.45417, 1)
+texture = ExtResource("2_cj5pa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-183, -265)
+shape = SubResource("RectangleShape2D_nrfsu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
