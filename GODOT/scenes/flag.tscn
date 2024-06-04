@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c48chy2jebaxs"]
+
+[ext_resource type="Texture2D" uid="uid://b85834xj538bd" path="res://sprites/flag-removebg-preview.png" id="1_dqt1g"]
+[ext_resource type="Script" path="res://flag.gd" id="1_e4884"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgm0n"]
+size = Vector2(132.75, 652)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_e4884")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(984, 280)
+texture = ExtResource("1_dqt1g")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(863.625, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.375, -1)
+shape = SubResource("RectangleShape2D_xgm0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(863.625, 290)
+shape = SubResource("RectangleShape2D_xgm0n")

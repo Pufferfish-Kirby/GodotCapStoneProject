@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cfyt3v7jnipsx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+
+[node name="TextEdit" type="TextEdit" parent="ParallaxBackground"]
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 1130.0
+offset_bottom = 632.0
+text = "YOU FINISHED! NICE JOB
+Click Enter to start again!"
