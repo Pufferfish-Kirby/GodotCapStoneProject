@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwnja83cgv3ik"]
+
+[ext_resource type="Script" path="res://movingPlatform.gd" id="1_hxatt"]
+[ext_resource type="Texture2D" uid="uid://cxlglt5f8mwd3" path="res://sprites/cat-pixel-art-pusheen-cat-removebg-preview.png" id="2_a6wen"]
+
+[sub_resource type="Curve2D" id="Curve2D_uexix"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 93, -129, 0, 0, 0, 0, 609, -141)
+}
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wiks1"]
+radius = 130.063
+height = 260.127
+
+[sub_resource type="Animation" id="Animation_q0vps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sq777"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x77ml"]
+_data = {
+"RESET": SubResource("Animation_q0vps"),
+"move": SubResource("Animation_sq777")
+}
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_uexix")
+script = ExtResource("1_hxatt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(93, -129)
+rotation = -0.0232516
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(93, -129)
+rotation = -0.0232516
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(782, 358)
+shape = SubResource("CapsuleShape2D_wiks1")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/CollisionShape2D"]
+position = Vector2(12.3164, -10.6181)
+scale = Vector2(0.610412, 0.521967)
+texture = ExtResource("2_a6wen")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x77ml")
+}

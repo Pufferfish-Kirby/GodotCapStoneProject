@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdgnyjcnbo3ya"]
+
+[ext_resource type="Script" path="res://moving pets.gd" id="1_do51r"]
+[ext_resource type="Texture2D" uid="uid://cxlglt5f8mwd3" path="res://sprites/cat-pixel-art-pusheen-cat-removebg-preview.png" id="2_tuyeg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejxd4"]
+radius = 157.0
+height = 314.0
+
+[node name="moving pets" type="CharacterBody2D"]
+script = ExtResource("1_do51r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(782, 358)
+shape = SubResource("CapsuleShape2D_ejxd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(796, 349)
+scale = Vector2(0.84, 0.662)
+texture = ExtResource("2_tuyeg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Timer2" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+
+[node name="Timer3" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+
+[node name="Timer4" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_4_timeout"]
