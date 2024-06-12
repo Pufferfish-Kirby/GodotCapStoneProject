@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://vxe7sy6cii16"]
+
+[ext_resource type="Script" path="res://scripts/dog.gd" id="1_ltui2"]
+[ext_resource type="Texture2D" uid="uid://cxqatpdsydyrw" path="res://sprites/pixeldog.png" id="2_11jtr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujt0w"]
+size = Vector2(294.5, 271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy2r4"]
+size = Vector2(216.25, 38.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf7ht"]
+radius = 55.0091
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7tns"]
+size = Vector2(247, 120.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sut4y"]
+size = Vector2(218.5, 356)
+
+[node name="Dog" type="CharacterBody2D"]
+position = Vector2(14, -100)
+script = ExtResource("1_ltui2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(536.75, 271.5)
+shape = SubResource("RectangleShape2D_ujt0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(604, 352)
+scale = Vector2(8.36617, 9.36661)
+texture = ExtResource("2_11jtr")
+
+[node name="top of dog" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top of dog"]
+position = Vector2(548, 254)
+shape = SubResource("RectangleShape2D_sy2r4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="top of dog"]
+position = Vector2(435, 191)
+shape = SubResource("CircleShape2D_rf7ht")
+
+[node name="bottom of dog" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom of dog"]
+position = Vector2(551, 365.625)
+shape = SubResource("RectangleShape2D_u7tns")
+
+[node name="drop distance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drop distance"]
+position = Vector2(551, 684)
+shape = SubResource("RectangleShape2D_sut4y")
+
+[connection signal="body_entered" from="top of dog" to="." method="_on_top_of_dog_body_entered"]
+[connection signal="body_entered" from="bottom of dog" to="." method="_on_bottom_of_dog_body_entered"]
+[connection signal="body_entered" from="drop distance" to="." method="_on_drop_distance_body_entered"]
